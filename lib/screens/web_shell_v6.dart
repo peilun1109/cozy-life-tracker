@@ -7,7 +7,7 @@ import 'mobile_entries_screen_v2.dart';
 import 'mobile_goals_screen_clean.dart';
 import 'mobile_review_screen_clean.dart';
 import 'mobile_settings_screen_clean.dart';
-import 'web_home_v3.dart';
+import 'web_home_v5.dart';
 
 class WebShellV6 extends StatefulWidget {
   const WebShellV6({
@@ -118,7 +118,7 @@ class _WebShellV6State extends State<WebShellV6> {
   Widget _buildBody() {
     switch (widget.appState.selectedSection) {
       case AppSection.home:
-        return WebHomeV3(appState: widget.appState);
+        return WebHomeV5(appState: widget.appState);
       case AppSection.entries:
         return _PageScaffold(
           title: '生活紀錄',
