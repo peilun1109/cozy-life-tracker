@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/web_shell_v4.dart';
+import 'screens/web_shell_v5.dart';
 import 'services/image_storage_service.dart';
 import 'services/reminder_service.dart';
 import 'state/app_state.dart';
@@ -47,7 +47,7 @@ class _ShiguangjiWebAppState extends State<ShiguangjiWebApp> {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
       home: _isReady
-          ? WebShellV4(appState: _appState)
+          ? WebShellV5(appState: _appState)
           : const Scaffold(
               body: Center(child: CircularProgressIndicator()),
             ),
