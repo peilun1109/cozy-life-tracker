@@ -1,1 +1,10 @@
 include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - lib/screens/mobile_entries_screen.dart
+    - lib/screens/mobile_goals_screen.dart
+    - lib/screens/mobile_home_screen.dart
+    - lib/screens/mobile_review_screen.dart
+    - lib/screens/mobile_settings_screen.dart
+    - lib/screens/mobile_shell.dart

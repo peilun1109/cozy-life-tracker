@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'screens/app_shell_clean.dart';
+import 'screens/mobile_shell_clean.dart';
 import 'services/image_storage_service.dart';
 import 'services/reminder_service.dart';
 import 'state/app_state.dart';
 import 'theme/app_theme.dart';
 
-class CozyLifeApp extends StatefulWidget {
-  const CozyLifeApp({super.key});
+class CozyLifeMobileAppV2 extends StatefulWidget {
+  const CozyLifeMobileAppV2({super.key});
 
   @override
-  State<CozyLifeApp> createState() => _CozyLifeAppState();
+  State<CozyLifeMobileAppV2> createState() => _CozyLifeMobileAppV2State();
 }
 
-class _CozyLifeAppState extends State<CozyLifeApp> {
+class _CozyLifeMobileAppV2State extends State<CozyLifeMobileAppV2> {
   late final AppState _appState;
   bool _isReady = false;
 
@@ -43,11 +43,11 @@ class _CozyLifeAppState extends State<CozyLifeApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '暖暖生活手帳',
+      title: '\u6696\u6696\u751f\u6d3b\u624b\u5e33',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
       home: _isReady
-          ? AppShell(appState: _appState)
+          ? MobileShellClean(appState: _appState)
           : const Scaffold(
               body: Center(child: CircularProgressIndicator()),
             ),

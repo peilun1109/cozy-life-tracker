@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'screens/app_shell_clean.dart';
+import 'screens/mobile_shell.dart';
 import 'services/image_storage_service.dart';
 import 'services/reminder_service.dart';
 import 'state/app_state.dart';
 import 'theme/app_theme.dart';
 
-class CozyLifeApp extends StatefulWidget {
-  const CozyLifeApp({super.key});
+class CozyLifeMobileApp extends StatefulWidget {
+  const CozyLifeMobileApp({super.key});
 
   @override
-  State<CozyLifeApp> createState() => _CozyLifeAppState();
+  State<CozyLifeMobileApp> createState() => _CozyLifeMobileAppState();
 }
 
-class _CozyLifeAppState extends State<CozyLifeApp> {
+class _CozyLifeMobileAppState extends State<CozyLifeMobileApp> {
   late final AppState _appState;
   bool _isReady = false;
 
@@ -47,7 +47,7 @@ class _CozyLifeAppState extends State<CozyLifeApp> {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
       home: _isReady
-          ? AppShell(appState: _appState)
+          ? MobileShell(appState: _appState)
           : const Scaffold(
               body: Center(child: CircularProgressIndicator()),
             ),

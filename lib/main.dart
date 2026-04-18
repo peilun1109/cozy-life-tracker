@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import 'cozy_life_app.dart';
+import 'app_web_v2.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('zh_TW');
-  runApp(const CozyLifeApp());
+  runApp(const CozyLifeWebAppV2());
 }
