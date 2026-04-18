@@ -162,7 +162,7 @@ class _WebHomeV3State extends State<WebHomeV3> {
     if (hour < 18) {
       return '午安，把今天慢慢過成你喜歡的樣子。';
     }
-    return '晚上好，記得把今天的小片段收進生活手帳裡。';
+    return '晚上好，記得把今天的小片段收進拾光機裡。';
   }
 }
 
