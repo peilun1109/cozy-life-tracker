@@ -114,6 +114,26 @@ class AppState extends ChangeNotifier {
     return entries.where((entry) => entry.goalId == goalId).toList();
   }
 
+  List<String> weeklyPlansOn(DateTime date) {
+    return settings.weeklyPlans[_dateKey(date)] ?? const [];
+  }
+
+  Future<void> saveWeeklyPlansOn(DateTime date, List<String> items) async {
+    final updated = Map<String, List<String>>.from(settings.weeklyPlans);
+    final normalized = items
+        .map((item) => item.trim())
+        .where((item) => item.isNotEmpty)
+        .toList();
+
+    if (normalized.isEmpty) {
+      updated.remove(_dateKey(date));
+    } else {
+      updated[_dateKey(date)] = normalized;
+    }
+
+    await saveSettings(settings.copyWith(weeklyPlans: updated));
+  }
+
   Future<Map<String, int>> monthMoodStats(DateTime month) {
     return _entryRepository.fetchMoodStatsForMonth(month);
   }
@@ -161,5 +181,11 @@ class AppState extends ChangeNotifier {
   void dispose() {
     _reminderService.stop();
     super.dispose();
+  }
+
+  String _dateKey(DateTime date) {
+    return '${date.year.toString().padLeft(4, '0')}-'
+        '${date.month.toString().padLeft(2, '0')}-'
+        '${date.day.toString().padLeft(2, '0')}';
   }
 }
