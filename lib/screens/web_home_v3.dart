@@ -63,25 +63,35 @@ class _WebHomeV3State extends State<WebHomeV3> {
                       title: '未來一週安排',
                       subtitle: '一週維持一排，直接在每一天的小卡片裡新增生活安排。',
                       accentColor: AppTheme.sky,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: upcomingWeek
-                              .map(
-                                (date) => Padding(
-                                  padding: EdgeInsets.only(
-                                    right: date == upcomingWeek.last ? 0 : 12,
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          const gap = 10.0;
+                          final cardWidth =
+                              ((constraints.maxWidth - gap * 6) / 7)
+                                  .clamp(92.0, 180.0);
+
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: upcomingWeek
+                                .map(
+                                  (date) => Padding(
+                                    padding: EdgeInsets.only(
+                                      right: date == upcomingWeek.last ? 0 : gap,
+                                    ),
+                                    child: SizedBox(
+                                      width: cardWidth,
+                                      child: _UpcomingDayCard(
+                                        date: date,
+                                        items: widget.appState.weeklyPlansOn(date),
+                                        dueGoals: widget.appState.goalsDueOn(date),
+                                        onAdd: () => _openWeeklyPlanEditor(date),
+                                      ),
+                                    ),
                                   ),
-                                  child: _UpcomingDayCard(
-                                    date: date,
-                                    items: widget.appState.weeklyPlansOn(date),
-                                    dueGoals: widget.appState.goalsDueOn(date),
-                                    onAdd: () => _openWeeklyPlanEditor(date),
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                        ),
+                                )
+                                .toList(),
+                          );
+                        },
                       ),
                     ),
                   ],
